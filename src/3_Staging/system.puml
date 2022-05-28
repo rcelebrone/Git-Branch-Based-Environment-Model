@@ -1,0 +1,12 @@
+@startuml development
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Container.puml
+
+Boundary(vpc, "project-name.staging.com.br", "Ambiente na núvem, compartilhado, réplica de produção, anonimizado") {
+    Container(branch, "Branch", "Branch onde será implementado a feature")
+    Container(image, "Docker image", "Aplicação que executa o código de uma branch")
+    Container(docker, "Docker container solution", "Permite validar comportamento (end-to-end), a implementação já foi validada, agora queremos testar o impacto no ambiente")
+}
+
+Rel(branch, image, "Gera")
+Rel(image, docker, "Executa")
+@enduml

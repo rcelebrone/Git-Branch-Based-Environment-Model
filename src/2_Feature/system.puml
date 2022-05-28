@@ -1,0 +1,12 @@
+@startuml development
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Container.puml
+
+Boundary(vpc, "project-name.feature-name.internal", "Ambiente multi-branch gerado a parti do nome do projeto + nome da branch") {
+    Container(branch, "Branch", "Branch onde será implementado a feature")
+    Container(image, "Docker image", "Aplicação que executa o código de uma branch")
+    Container(docker, "Docker container solution", "Permite executar aplicações, testar a aplicação usando mock, não tem dependencia externa")
+}
+
+Rel(branch, image, "Gera")
+Rel(image, docker, "Executa")
+@enduml

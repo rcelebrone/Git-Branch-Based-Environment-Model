@@ -1,0 +1,10 @@
+@startuml development
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Container.puml
+
+Container(branch, "Branch", "Branch onde será implementado a feature")
+Container(image, "Docker image", "Aplicação que executa o código de uma branch")
+Container(docker, "Docker desktop", "Permite executar aplicações, sem dependencia externa, faz uso de mock")
+
+Rel(branch, image, "Gera")
+Rel(image, docker, "Executa")
+@enduml
