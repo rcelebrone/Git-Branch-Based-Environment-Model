@@ -3,3 +3,6 @@
 `/4_Production`
 
 ![diagram](https://www.plantuml.com/plantuml/svg/0/PLBDJXmn3BwljEzWvWJIidFXn8doervQ2I5nHjwCcKb9ujH91b3LXq4SU83UUfqNgxFB3bMRasCxtu-TivHHSl4EEXh9SVGKyd9nO8DnfICOSexfj6q57zUzpKFPb4HYE6JjMnlsBNPYCOoknD9Ud1nVEmpvzkkNrc6cb3LrTw7TQ0F9EYhHSh5Sd7C97ShpuHZD2fee_8rCFWxegMAkDz9e-fFVM6KX20XX-ZsINu6sPkfjnyqH_5WkGCyCVxWH36RGb-VRe9aZuA1ULFZq0jP7HzKbTWm8zuIv23L7_u9PZpqfmYMR1nBONhUgehC6fxVfbU5x8Q0dCYKZC9ZfLsTxrab2yGWxDVy3Trl03sIphq1YLxBbK6ckIRpDCxoeLFoBELAFGGsO0KTAAo0rA3IziSObbUb5B2UediE02QhL_JG938gylmyCknyGgz2VTJatvEP9xeVmcGHhGwszvsORLpk5jNocCdJ5Vm00)
+
+## 4 Production
+O que dizer? Aqui o desenvolvedor não deve saber qual endereços dos bancos, usuários, senhas, nomes de recursos. Nada, absolutamente nada. Passar no end-to-end em Staging deve ser o necessário para garantir que produção vai se comportar da forma correta. Se algo não der certo nessa etapa é provavel que o ambiente de staging não esteja atualizado com produção ou que algo não previsto também entrou para o ambiente de staging no momento do end-to-end. A url aqui é do endereço de produção do projeto: *https://{{project-name}}.com.br*
