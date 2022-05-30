@@ -1,5 +1,7 @@
 @startuml overview
-!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+HIDE_STEREOTYPE()
 
 Boundary(local, "Maquina do desenvolvedor") {
     Person(developer, "Pessoa desenvolvedora", "Pessoa que trabalha no software.")
@@ -10,13 +12,19 @@ Boundary(cloud, "Ambiente na nuvem") {
     System(feat, "project-name.feature-name.internal", "Ambiente multi-branch gerado a parti do nome do projeto + nome da branch. Testando a feature apenas, ainda faz uso de mock, não tem dependencia externa, mas já roda na núvem")
     System(stg, "project-name.staging.com.br", "Ambiente na núvem, compartilhado, réplica de produção, anonimizado. Validação de comportamento (end-to-end), a implementação já foi validada, agora queremos testar o impacto no ambiente")
     System(prd, "project-name.com.br", "Ambiente na núvem, protegido. Implementado. A aplicação pega chaves, endereços, usuários e senhas do ambiente e carrega no startup")
+    System(sbx, "[project-name.sandbox.com.br]", "[opcional] Replica de produção utilizada por alguns sistemas para validar alguma entrega em produção")
 }
 
 Lay_L(cloud, local)
 
+AddElementTag("opcional")
+
+AddRelTag("opcional", $lineStyle = DashedLine())
+
 Rel_R(developer, dev, "Utiliza")
 Rel_U(prd, dev, "1) Gera branch para")
-Rel(dev, feat, "2) Gera push")
-Rel(feat, stg, "3) Gera PR")
-Rel_R(stg, prd, "4) Gera PR")
+Rel(dev, feat, "2) Gera push para")
+Rel(feat, stg, "3) Gera PR para")
+Rel_R(stg, prd, "4) Gera PR para")
+Rel_D(prd, sbx, "5) Replica para", $tags="opcional")
 @enduml
